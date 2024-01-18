@@ -52,15 +52,21 @@ function sendEmail() {
     const bodyMessage = `Full Name: ${fullName.value}<br> Email: ${email.value}<br> Mobile Number: ${phone.value}<br> Message: ${mess.value}`;
 
     Email.send({
-        Host: "smtp.elasticemail.com",
-        Username: "vinyrbe@gmail.com",
-        Password: "D875C37C2381BE50015095C4C55A84AAE620",
+        SecureToken:"51079e0f-34dd-4ec8-9f26-bad3309e3151",
         To: 'vtan6762@gmail.com',
         From: "vinyrbe@gmail.com",
         Subject: subject.value,
         Body: bodyMessage
     }).then(
-        message => alert(message)
+        message => {
+            if (message == "OK") {
+                Swal.fire({
+                    title: "Success!",
+                    text: "Message sent successfully!",
+                    icon: "success"
+                  });
+            }
+        }
     );
 }
 
